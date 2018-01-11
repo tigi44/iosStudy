@@ -19,6 +19,7 @@
 		0E41D8CE2005B7DF005069F1 /* ImageSampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E41D8CD2005B7DF005069F1 /* ImageSampleView.m */; };
 		0E41D8D220075375005069F1 /* TestTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E41D8D120075375005069F1 /* TestTouchView.m */; };
 		0E41D8D520075657005069F1 /* TestTouchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E41D8D420075657005069F1 /* TestTouchViewController.m */; };
+		0E41D8D820077448005069F1 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E41D8D720077448005069F1 /* SampleTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		0E41D8D120075375005069F1 /* TestTouchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTouchView.m; sourceTree = "<group>"; };
 		0E41D8D320075657005069F1 /* TestTouchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTouchViewController.h; sourceTree = "<group>"; };
 		0E41D8D420075657005069F1 /* TestTouchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestTouchViewController.m; sourceTree = "<group>"; };
+		0E41D8D620077448005069F1 /* SampleTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleTableViewCell.h; sourceTree = "<group>"; };
+		0E41D8D720077448005069F1 /* SampleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 				0E41D8CC2005B7DF005069F1 /* ImageSampleView.h */,
 				0E41D8CD2005B7DF005069F1 /* ImageSampleView.m */,
 				0E41D8CF20075197005069F1 /* TestProtocol.h */,
+				0E41D8D620077448005069F1 /* SampleTableViewCell.h */,
+				0E41D8D720077448005069F1 /* SampleTableViewCell.m */,
 				0E41D8D020075375005069F1 /* TestTouchView.h */,
 				0E41D8D120075375005069F1 /* TestTouchView.m */,
 				0E41D8D320075657005069F1 /* TestTouchViewController.h */,
@@ -308,6 +313,7 @@
 				0E41D8CE2005B7DF005069F1 /* ImageSampleView.m in Sources */,
 				0E41D89F200599A1005069F1 /* main.m in Sources */,
 				0E41D8D220075375005069F1 /* TestTouchView.m in Sources */,
+				0E41D8D820077448005069F1 /* SampleTableViewCell.m in Sources */,
 				0E41D891200599A1005069F1 /* AppDelegate.m in Sources */,
 				0E41D8D520075657005069F1 /* TestTouchViewController.m in Sources */,
 			);
