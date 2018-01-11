@@ -13,6 +13,7 @@
 @property (nonatomic, readwrite) UIImageView *imageView;
 @property (nonatomic, readwrite) UILabel *descriptionLabel;
 @property (nonatomic, readwrite) CALayer *imageSubLayer;
+@property (nonatomic, readwrite) UIButton *button;
 
 @end
 
@@ -58,6 +59,11 @@
     sDescriptionLabelFrame.origin.x = (NSInteger)(([[_descriptionLabel superview] frame].size.width - sDescriptionLabelFrame.size.width) / 2); // MoveToHorizontalCenter
     sDescriptionLabelFrame.origin.y = sImageViewFrame.origin.y + sImageViewFrame.size.height + 10.0f; // MoveToBottomOf 'ImageView'
     [_descriptionLabel setFrame:sDescriptionLabelFrame];
+    
+    CGRect sButtonFrame = [_button frame];
+    sButtonFrame.origin.x = (NSInteger)(([[_button superview] frame].size.width - sButtonFrame.size.width) / 2); // MoveToHorizontalCenter
+    sButtonFrame.origin.y = sDescriptionLabelFrame.origin.y + sDescriptionLabelFrame.size.height + 10.0f; // MoveToBottomOf 'DescriptionLabel'
+    [_button setFrame:sButtonFrame];
 }
 
 - (void)setupSubview
@@ -86,8 +92,13 @@
     [sLabel setFont:[UIFont boldSystemFontOfSize:24.0f]];
     [sLabel setTextColor:[UIColor whiteColor]];
     [sLabel setText:@"...."];
-    
+
     [self addSubview:sLabel];
+    
+    [self setButton:[UIButton buttonWithType:(UIButtonTypeContactAdd)]];
+    
+    UIButton *sButton = [self button];
+    [self addSubview:sButton];
     
 }
 

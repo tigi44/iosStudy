@@ -14,5 +14,6 @@
 @property (nonatomic, readonly) UIImageView *imageView;
 @property (nonatomic, readonly) UILabel *descriptionLabel;
 @property (nonatomic, readonly) CALayer *imageSubLayer;
+@property (nonatomic, readonly) UIButton *button;
 
 @end

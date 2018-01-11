@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "SampleView.h"
 #import "ImageSampleView.h"
+#import "TestTouchViewController.h"
 
 @interface ViewController ()
 
@@ -37,12 +38,15 @@
     [super viewDidLoad];
     NSLog(@"viewDidLoad");
     
+    ImageSampleView *sView = (ImageSampleView *)[self view];
+    
     [self requestURL:@"https://pbs.twimg.com/profile_images/937105261982109696/YV99y6I6_400x400.jpg"
           completion:^(UIImage *aImage) {
-              ImageSampleView *sView = (ImageSampleView *)[self view];
               [[sView imageView] setImage:aImage];
               [[sView imageSubLayer] setContents:(id)aImage.CGImage];
           }];
+    
+    [[sView button] addTarget:self action:@selector(didTapButton) forControlEvents:UIControlEventTouchUpInside];
     
     // case 1
     // addSubview 시 layoutSubview 가 한번 불리고, loadView시 view의 크기가 확정되지 않았기에 subview가 화면에 노출되면서 resizing되어 layoutSubview가 한번 더 불림.(이 방식으로는 layoutsubview가 총 두번 불림)
@@ -107,5 +111,12 @@
             }
         });
     });
+}
+
+- (void)didTapButton
+{
+    UIViewController *sTouchViewController = [[TestTouchViewController alloc] initWithNibName:nil bundle:nil];
+    NSLog(@"self navigation: %@", [self navigationController]);
+    [[self navigationController] pushViewController:sTouchViewController animated:YES];
 }
 @end
