@@ -11,13 +11,14 @@
 #import "TestTouchView.h"
 #import "SampleTableViewCell.h"
 
-static NSArray *gMockupData = nil;
+static NSMutableArray *gMockupData = nil;
 static NSArray *gCellColor = nil;
 
 @interface TestTouchViewController () <TestProtocol, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, readonly) TestTouchView *touchView;
 @property (nonatomic, readwrite) UITableView *tableView;
+@property (nonatomic, readwrite) UIRefreshControl *refreshControl;
 
 @end
 
@@ -41,6 +42,12 @@ static NSArray *gCellColor = nil;
     [_tableView registerClass:[SampleTableViewCell class] forCellReuseIdentifier:NSStringFromClass([SampleTableViewCell class])];
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
+    
+    [self setRefreshControl:[[UIRefreshControl alloc] init]];
+    [_refreshControl setAttributedTitle:[[NSAttributedString alloc]initWithString:@"Pull to Refresh"]];
+//    [_refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    [_tableView setRefreshControl:_refreshControl];
+    
     [self setView:_tableView];
 }
 
@@ -49,6 +56,9 @@ static NSArray *gCellColor = nil;
     NSLog(@"TestTouchViewController - viewWillAppear");
     // TestProtocol EX.
 //    [[self touchView] setDelegate:self];
+    
+    UINavigationItem *sNavItem = [self navigationItem];
+    sNavItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -92,17 +102,42 @@ static NSArray *gCellColor = nil;
     NSLog(@"%@", @"didTap protocol");
 }
 
+// refresh view when did scroll (instead of adding target on the UIRefreshControl)
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if ([_refreshControl isRefreshing]) {
+        NSLog(@"%@", @"refresh table view");
+        [_refreshControl endRefreshing];
+        
+        // call a self class method
+        [[self class] initialize];
+        
+        [_tableView reloadData];
+    }
+}
+
+//- (void)refreshView: (UIRefreshControl *)sender
+//{
+//    NSLog(@"%@", @"refresh table view");
+//    [_refreshControl endRefreshing];
+//
+//    // call a self class method
+//    [[self class] initialize];
+//
+//    [_tableView reloadData];
+//}
+
 #pragma mark - Implements UITableViewDataSource Methods.
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [gMockupData count];
 }
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)aSection
 {
     NSLog(@"%@", @"numberOfRowsInSection");
-    return [gMockupData count];
+    return [gMockupData[aSection] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)aIndexPath
@@ -113,14 +148,45 @@ static NSArray *gCellColor = nil;
     SampleTableViewCell *sTableViewCell = (SampleTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:NSStringFromClass([SampleTableViewCell class])];
     
     NSAssert(sTableViewCell != nil, @"unexpected condition");
-    NSAssert(sIndex < [gMockupData count], @"unexpected condition");
+    NSAssert(sIndex < [gMockupData[sSection] count], @"unexpected condition");
     
     [sTableViewCell setBackgroundColor:gCellColor[sSection]];
-    [[sTableViewCell textLabel] setText:gMockupData[sIndex]];
-    [sTableViewCell setNeedsLayout];
+    [[sTableViewCell textLabel] setText:gMockupData[sSection][sIndex]];
+    //[sTableViewCell setNeedsLayout];
     //[sTableViewCell layoutIfNeeded];
     
     return sTableViewCell;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [_tableView setEditing:editing animated:animated];
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    NSLog(@"%@ - %@ - %@", @"moveRowAtIndexPath", fromIndexPath, toIndexPath);
+    NSString *fromRow = gMockupData[[fromIndexPath section]][[fromIndexPath row]];
+    
+    NSMutableArray *toSectionData = [gMockupData[[toIndexPath section]] mutableCopy];
+    [toSectionData insertObject:fromRow atIndex:[toIndexPath row]];
+    [gMockupData replaceObjectAtIndex:[toIndexPath section] withObject:toSectionData];
+    
+    NSMutableArray *fromSectionData = [gMockupData[[fromIndexPath section]] mutableCopy];
+    [fromSectionData removeObjectAtIndex:[fromIndexPath row]];
+    [gMockupData replaceObjectAtIndex:[fromIndexPath section] withObject:fromSectionData];
+    [tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSLog(@"%@ - %@", @"delete commit", indexPath);
+        NSMutableArray *sectionData = [gMockupData[[indexPath section]] mutableCopy];
+        [sectionData removeObjectAtIndex:[indexPath row]];
+        [gMockupData replaceObjectAtIndex:[indexPath section] withObject:sectionData];
+        [tableView reloadData];
+    }
 }
 
 #pragma mark - Implements UITableViewDelegate Methods.
@@ -138,7 +204,7 @@ static NSArray *gCellColor = nil;
 + (void)initialize
 {
     [super initialize];
-    gMockupData = @[@"1", @"2", @"3"];
+    gMockupData = [@[@[@"1", @"2", @"3"], @[@"11", @"22", @"33"], @[@"111", @"222", @"333"]] mutableCopy];
     gCellColor = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
 }
 
