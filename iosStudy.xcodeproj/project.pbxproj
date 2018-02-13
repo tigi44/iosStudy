@@ -42,6 +42,18 @@
 		0EA7C84A20329061007735E1 /* TouchSampleProtocolImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C823203161BB007735E1 /* TouchSampleProtocolImpl.m */; };
 		0EA7C84E203292DE007735E1 /* SampleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C84D203292DE007735E1 /* SampleTableViewCell.m */; };
 		0EA7C8512032A034007735E1 /* SampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8502032A034007735E1 /* SampleTableViewController.m */; };
+		0EA7C85A2032C439007735E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8592032C439007735E1 /* AppDelegate.m */; };
+		0EA7C85D2032C439007735E1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C85C2032C439007735E1 /* ViewController.m */; };
+		0EA7C8602032C439007735E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7C85E2032C439007735E1 /* Main.storyboard */; };
+		0EA7C8622032C439007735E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7C8612032C439007735E1 /* Assets.xcassets */; };
+		0EA7C8652032C439007735E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7C8632032C439007735E1 /* LaunchScreen.storyboard */; };
+		0EA7C8682032C439007735E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8672032C439007735E1 /* main.m */; };
+		0EA7C8722032C65B007735E1 /* SampleMainVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8712032C65B007735E1 /* SampleMainVO.m */; };
+		0EA7C8752032C66B007735E1 /* SampleSubVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8742032C66B007735E1 /* SampleSubVO.m */; };
+		0EA7C8782032C6D8007735E1 /* SampleMainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8772032C6D8007735E1 /* SampleMainViewModel.m */; };
+		0EA7C87B2032C6E6007735E1 /* SampleSubViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C87A2032C6E6007735E1 /* SampleSubViewModel.m */; };
+		0EA7C87F2032C890007735E1 /* SampleMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C87E2032C890007735E1 /* SampleMainTableViewCell.m */; };
+		0EA7C8822032C89A007735E1 /* SampleSubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8812032C89A007735E1 /* SampleSubTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +107,29 @@
 		0EA7C84D203292DE007735E1 /* SampleTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewCell.m; sourceTree = "<group>"; };
 		0EA7C84F2032A034007735E1 /* SampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleTableViewController.h; sourceTree = "<group>"; };
 		0EA7C8502032A034007735E1 /* SampleTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleTableViewController.m; sourceTree = "<group>"; };
+		0EA7C8562032C438007735E1 /* 4_MultiCellTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 4_MultiCellTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EA7C8582032C439007735E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0EA7C8592032C439007735E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0EA7C85B2032C439007735E1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0EA7C85C2032C439007735E1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0EA7C85F2032C439007735E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0EA7C8612032C439007735E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0EA7C8642032C439007735E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0EA7C8662032C439007735E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EA7C8672032C439007735E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0EA7C8702032C65B007735E1 /* SampleMainVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleMainVO.h; sourceTree = "<group>"; };
+		0EA7C8712032C65B007735E1 /* SampleMainVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleMainVO.m; sourceTree = "<group>"; };
+		0EA7C8732032C66B007735E1 /* SampleSubVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleSubVO.h; sourceTree = "<group>"; };
+		0EA7C8742032C66B007735E1 /* SampleSubVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleSubVO.m; sourceTree = "<group>"; };
+		0EA7C8762032C6D8007735E1 /* SampleMainViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleMainViewModel.h; sourceTree = "<group>"; };
+		0EA7C8772032C6D8007735E1 /* SampleMainViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleMainViewModel.m; sourceTree = "<group>"; };
+		0EA7C8792032C6E6007735E1 /* SampleSubViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleSubViewModel.h; sourceTree = "<group>"; };
+		0EA7C87A2032C6E6007735E1 /* SampleSubViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleSubViewModel.m; sourceTree = "<group>"; };
+		0EA7C87C2032C704007735E1 /* SampleViewModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleViewModelProtocol.h; sourceTree = "<group>"; };
+		0EA7C87D2032C890007735E1 /* SampleMainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleMainTableViewCell.h; sourceTree = "<group>"; };
+		0EA7C87E2032C890007735E1 /* SampleMainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleMainTableViewCell.m; sourceTree = "<group>"; };
+		0EA7C8802032C89A007735E1 /* SampleSubTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleSubTableViewCell.h; sourceTree = "<group>"; };
+		0EA7C8812032C89A007735E1 /* SampleSubTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleSubTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,15 +154,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0EA7C8532032C438007735E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0E41D883200599A1005069F1 = {
 			isa = PBXGroup;
 			children = (
+				0EA7C86C2032C46B007735E1 /* Common */,
 				0EA7C7D420315BD4007735E1 /* 1_UIViewExample */,
 				0EA7C7FD203160DC007735E1 /* 2_ProtocolDelegateExample */,
 				0EA7C8302032903F007735E1 /* 3_TableViewExample */,
+				0EA7C8572032C439007735E1 /* 4_MultiCellTableViewExample */,
 				0E41D88D200599A1005069F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -138,6 +182,7 @@
 				0EA7C7D320315BD4007735E1 /* 1_UIViewExample.app */,
 				0EA7C7FC203160DC007735E1 /* 2_ProtocolDelegateExample.app */,
 				0EA7C82F2032903F007735E1 /* 3_TableViewExample.app */,
+				0EA7C8562032C438007735E1 /* 4_MultiCellTableViewExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,7 +190,6 @@
 		0EA7C7D420315BD4007735E1 /* 1_UIViewExample */ = {
 			isa = PBXGroup;
 			children = (
-				0EA7C7F020315EB6007735E1 /* Common */,
 				0EA7C7EF20315EB0007735E1 /* UIView */,
 				0EA7C7D520315BD4007735E1 /* AppDelegate.h */,
 				0EA7C7D620315BD4007735E1 /* AppDelegate.m */,
@@ -169,14 +213,6 @@
 				0EA7C7F220315EE4007735E1 /* UIViewSampleView.m */,
 			);
 			path = UIView;
-			sourceTree = "<group>";
-		};
-		0EA7C7F020315EB6007735E1 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				0EA7C7F120315EDB007735E1 /* ISDebugLog.h */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		0EA7C7FD203160DC007735E1 /* 2_ProtocolDelegateExample */ = {
@@ -258,6 +294,67 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		0EA7C8572032C439007735E1 /* 4_MultiCellTableViewExample */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7C86E2032C5DC007735E1 /* VO */,
+				0EA7C86F2032C5F3007735E1 /* ViewModel */,
+				0EA7C86D2032C5CA007735E1 /* TableViewCell */,
+				0EA7C8582032C439007735E1 /* AppDelegate.h */,
+				0EA7C8592032C439007735E1 /* AppDelegate.m */,
+				0EA7C85B2032C439007735E1 /* ViewController.h */,
+				0EA7C85C2032C439007735E1 /* ViewController.m */,
+				0EA7C85E2032C439007735E1 /* Main.storyboard */,
+				0EA7C8612032C439007735E1 /* Assets.xcassets */,
+				0EA7C8632032C439007735E1 /* LaunchScreen.storyboard */,
+				0EA7C8662032C439007735E1 /* Info.plist */,
+				0EA7C8672032C439007735E1 /* main.m */,
+			);
+			path = 4_MultiCellTableViewExample;
+			sourceTree = "<group>";
+		};
+		0EA7C86C2032C46B007735E1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7C7F120315EDB007735E1 /* ISDebugLog.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0EA7C86D2032C5CA007735E1 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7C87D2032C890007735E1 /* SampleMainTableViewCell.h */,
+				0EA7C87E2032C890007735E1 /* SampleMainTableViewCell.m */,
+				0EA7C8802032C89A007735E1 /* SampleSubTableViewCell.h */,
+				0EA7C8812032C89A007735E1 /* SampleSubTableViewCell.m */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		0EA7C86E2032C5DC007735E1 /* VO */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7C8702032C65B007735E1 /* SampleMainVO.h */,
+				0EA7C8712032C65B007735E1 /* SampleMainVO.m */,
+				0EA7C8732032C66B007735E1 /* SampleSubVO.h */,
+				0EA7C8742032C66B007735E1 /* SampleSubVO.m */,
+			);
+			path = VO;
+			sourceTree = "<group>";
+		};
+		0EA7C86F2032C5F3007735E1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7C87C2032C704007735E1 /* SampleViewModelProtocol.h */,
+				0EA7C8762032C6D8007735E1 /* SampleMainViewModel.h */,
+				0EA7C8772032C6D8007735E1 /* SampleMainViewModel.m */,
+				0EA7C8792032C6E6007735E1 /* SampleSubViewModel.h */,
+				0EA7C87A2032C6E6007735E1 /* SampleSubViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -312,6 +409,23 @@
 			productReference = 0EA7C82F2032903F007735E1 /* 3_TableViewExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0EA7C8552032C438007735E1 /* 4_MultiCellTableViewExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EA7C8692032C439007735E1 /* Build configuration list for PBXNativeTarget "4_MultiCellTableViewExample" */;
+			buildPhases = (
+				0EA7C8522032C438007735E1 /* Sources */,
+				0EA7C8532032C438007735E1 /* Frameworks */,
+				0EA7C8542032C438007735E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 4_MultiCellTableViewExample;
+			productName = 4_MultiCellTableViewExample;
+			productReference = 0EA7C8562032C438007735E1 /* 4_MultiCellTableViewExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -333,6 +447,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					0EA7C8552032C438007735E1 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 0E41D887200599A1005069F1 /* Build configuration list for PBXProject "iosStudy" */;
@@ -351,6 +469,7 @@
 				0EA7C7D220315BD4007735E1 /* 1_UIViewExample */,
 				0EA7C7FB203160DC007735E1 /* 2_ProtocolDelegateExample */,
 				0EA7C82E2032903F007735E1 /* 3_TableViewExample */,
+				0EA7C8552032C438007735E1 /* 4_MultiCellTableViewExample */,
 			);
 		};
 /* End PBXProject section */
@@ -383,6 +502,16 @@
 				0EA7C83E2032903F007735E1 /* LaunchScreen.storyboard in Resources */,
 				0EA7C83B2032903F007735E1 /* Assets.xcassets in Resources */,
 				0EA7C8392032903F007735E1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EA7C8542032C438007735E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EA7C8652032C439007735E1 /* LaunchScreen.storyboard in Resources */,
+				0EA7C8622032C439007735E1 /* Assets.xcassets in Resources */,
+				0EA7C8602032C439007735E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +565,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0EA7C8522032C438007735E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EA7C85D2032C439007735E1 /* ViewController.m in Sources */,
+				0EA7C8752032C66B007735E1 /* SampleSubVO.m in Sources */,
+				0EA7C8722032C65B007735E1 /* SampleMainVO.m in Sources */,
+				0EA7C87B2032C6E6007735E1 /* SampleSubViewModel.m in Sources */,
+				0EA7C8822032C89A007735E1 /* SampleSubTableViewCell.m in Sources */,
+				0EA7C8782032C6D8007735E1 /* SampleMainViewModel.m in Sources */,
+				0EA7C8682032C439007735E1 /* main.m in Sources */,
+				0EA7C87F2032C890007735E1 /* SampleMainTableViewCell.m in Sources */,
+				0EA7C85A2032C439007735E1 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -483,6 +628,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				0EA7C83D2032903F007735E1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0EA7C85E2032C439007735E1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EA7C85F2032C439007735E1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0EA7C8632032C439007735E1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EA7C8642032C439007735E1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -672,6 +833,32 @@
 			};
 			name = Release;
 		};
+		0EA7C86A2032C439007735E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = 4_MultiCellTableViewExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tigi.--MultiCellTableViewExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0EA7C86B2032C439007735E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = 4_MultiCellTableViewExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tigi.--MultiCellTableViewExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -707,6 +894,15 @@
 			buildConfigurations = (
 				0EA7C8432032903F007735E1 /* Debug */,
 				0EA7C8442032903F007735E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EA7C8692032C439007735E1 /* Build configuration list for PBXNativeTarget "4_MultiCellTableViewExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EA7C86A2032C439007735E1 /* Debug */,
+				0EA7C86B2032C439007735E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
