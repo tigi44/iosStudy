@@ -1,24 +1,16 @@
 //
 //  ViewController.m
-//  2_ProtocolDelegateExample
+//  3_TableViewExample
 //
-//  Created by tigi on 2018. 2. 12..
+//  Created by tigi on 2018. 2. 13..
 //  Copyright © 2018년 tigi. All rights reserved.
 //
 
 #import "ViewController.h"
 #import "ProtocolDelegateSampleUIView.h"
-#import "ProtocolDelegateViewController.h"
-#import "TouchSampleProtocol.h"
-#import "TouchSampleProtocolImpl.h"
-#import "TouchSamplProtocolImplButDoesNotRespondsSelector.h"
-
-#define TEST_CRASH 0
+#import "SampleTableViewController.h"
 
 @interface ViewController ()
-
-@property (nonatomic, readwrite) id<TouchSampleProtocol> sampleProtocolTestImpl;
-
 @end
 
 @implementation ViewController
@@ -26,15 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     ISDebugLog();
-    
-    // 1. for testing a optional method on protocol
-#if TEST_CRASH
-    [self setSampleProtocolTestImpl:(id<TouchSampleProtocol>)[[TouchSamplProtocolImplButDoesNotRespondsSelector alloc] init]];
-#else
-    [self setSampleProtocolTestImpl:(id<TouchSampleProtocol>)[[TouchSampleProtocolImpl alloc] init]];
-#endif
-    [_sampleProtocolTestImpl optionalProtocolMethod]; // [_sampleProtocolTestImpl conformsToProtocol:@protocol(TouchSampleProtocol)] &&[_sampleProtocolTestImpl respondsToSelector:@selector(optionalProtocolMethod)]
-    
     
     ProtocolDelegateSampleUIView *sSampleView = [[ProtocolDelegateSampleUIView alloc] initWithFrame:[self view].bounds];
     [[self view] addSubview:sSampleView];
@@ -48,12 +31,10 @@
     [[sSampleView button] addTarget:self action:@selector(didTapAddButton) forControlEvents:UIControlEventTouchUpInside];
 }
 
-// 2. for testing delegate pattern
-// add a new viewcontroller for testing a delegate
 - (void)didTapAddButton
 {
-    UIViewController *sProtocolDelegateViewController = [[ProtocolDelegateViewController alloc] initWithNibName:nil bundle:nil];
-    [[self navigationController] pushViewController:sProtocolDelegateViewController animated:YES];
+    UIViewController *sSampleTableViewController = [[SampleTableViewController alloc] initWithNibName:nil bundle:nil];
+    [[self navigationController] pushViewController:sSampleTableViewController animated:YES];
 }
 
 #pragma mark - request a image url
@@ -76,4 +57,3 @@
     });
 }
 @end
-

@@ -1,8 +1,8 @@
 //
 //  SampleTableViewCell.m
-//  iosStudy
+//  3_TableViewExample
 //
-//  Created by tigi on 2018. 1. 11..
+//  Created by tigi on 2018. 2. 13..
 //  Copyright © 2018년 tigi. All rights reserved.
 //
 
@@ -22,13 +22,12 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    NSLog(@"%@", @"SampleTabelViewCell - layoutSubview");
+    ISDebugLog();
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
-
 @end

@@ -37,6 +37,7 @@
     [super viewDidLoad];
     ISDebugLog();
     
+    // 2. for testing delegate pattern
     // set delegate on the touchSampleView
     [[self touchSampleView] setDelegate:self];
 }

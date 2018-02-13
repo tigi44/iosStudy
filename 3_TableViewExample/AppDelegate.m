@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  iosStudy
+//  3_TableViewExample
 //
-//  Created by tigi on 2018. 1. 10..
+//  Created by tigi on 2018. 2. 13..
 //  Copyright © 2018년 tigi. All rights reserved.
 //
 
@@ -19,6 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // to navi view;
     UINavigationController *sNavigationController = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] initWithNibName:nil bundle:nil]];
     //[self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
     [[self window] setRootViewController:sNavigationController];

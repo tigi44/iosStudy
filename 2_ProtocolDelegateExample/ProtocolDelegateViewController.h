@@ -6,7 +6,7 @@
 //  Copyright © 2018년 tigi. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface ProtocolDelegateViewController : UIViewController
 
