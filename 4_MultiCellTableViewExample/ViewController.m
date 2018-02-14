@@ -152,10 +152,9 @@ static NSArray *gMockupData = nil;
 
 /**
  data converts to view model
- 
- @return : view model array
  */
-- (NSArray<id<SampleViewModelProtocol>> *)mockDatasConvertToViewModels {
+- (NSArray<id<SampleViewModelProtocol>> *)mockDatasConvertToViewModels
+{
     NSMutableArray<id<SampleViewModelProtocol>> *sViewModels = [NSMutableArray array];
     for (id data in gMockupData)
     {
@@ -178,9 +177,7 @@ static NSArray *gMockupData = nil;
 }
 
 /**
- add view model to the table view
- 
- @param aViewModels : view models
+ reload and add view model to the table view
  */
 - (void)reloadTableView:(UITableView *)aTableView addViewModels:(NSArray<id<SampleViewModelProtocol>> *)aViewModels
 {
@@ -190,9 +187,9 @@ static NSArray *gMockupData = nil;
         if ([viewModel conformsToProtocol:@protocol(SampleViewModelProtocol)])
         {
             Class sTableViewModelClass = [[viewModel class] tableViewCellClass];
-            id sTabelViewCell = [_tableView dequeueReusableCellWithIdentifier:NSStringFromClass(sTableViewModelClass)];
+            id sTabelViewCell = [aTableView dequeueReusableCellWithIdentifier:NSStringFromClass(sTableViewModelClass)];
             if (!sTabelViewCell) {
-                [_tableView registerClass:sTableViewModelClass forCellReuseIdentifier:NSStringFromClass(sTableViewModelClass)];
+                [aTableView registerClass:sTableViewModelClass forCellReuseIdentifier:NSStringFromClass(sTableViewModelClass)];
             }
             [viewModelProtocols addObject:viewModel];
         }
