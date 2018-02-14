@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  5_CollectionVIewExample
+//  6_CustomLayoutCollectionViewExample
 //
-//  Created by tigi on 2018. 2. 13..
+//  Created by tigi on 2018. 2. 14..
 //  Copyright © 2018년 tigi. All rights reserved.
 //
 
@@ -10,13 +10,18 @@
 #import "ISDebugLog.h"
 #import "SampleCollectionViewModel.h"
 #import "SampleSubCollectionViewModel.h"
+#import "DSCircularLayout.h"
+
+#define DID_SEL_TO_DELETE 1
 
 static NSArray *gMockupData = nil;
 
 @interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, readwrite) UICollectionView *collectionView;
-@property(nonatomic, readwrite) NSArray<id<SampleCollectionViewModelProtocol>> *viewModels;
+@property(nonatomic, readwrite) NSArray *viewModels;
+@property(nonatomic, readwrite) NSArray<id<SampleCollectionViewModelProtocol>> *firstSectionViewModels;
+@property(nonatomic, readwrite) NSArray<id<SampleCollectionViewModelProtocol>> *secondSectionViewModels;
 
 @end
 
@@ -63,38 +68,45 @@ static NSArray *gMockupData = nil;
     [super viewDidLoad];
     ISDebugLog();
     
-    [self setCollectionView:[[UICollectionView alloc] initWithFrame:[[self view] frame] collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]]];
+    DSCircularLayout *circularLayout = [[DSCircularLayout alloc] init];
+    CGFloat sItemSize = 50.f;
+    [circularLayout initWithCentre:CGPointMake([[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2)
+                            radius:[[UIScreen mainScreen] bounds].size.width/3
+                          itemSize:CGSizeMake(sItemSize, sItemSize)
+                 andAngularSpacing:sItemSize * 1.8f];
+    [circularLayout setStartAngle:M_PI endAngle:-M_PI];
+    circularLayout.mirrorX = NO;
+    circularLayout.mirrorY = NO;
+    circularLayout.rotateItems = YES;
+    circularLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    UICollectionViewFlowLayout *sLayout = (UICollectionViewFlowLayout *)[_collectionView collectionViewLayout];
-    [sLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [sLayout setFooterReferenceSize:CGSizeZero];
-    [sLayout setHeaderReferenceSize:CGSizeZero];
-    [sLayout setMinimumLineSpacing:0.0f];
-    [sLayout setMinimumInteritemSpacing:0.0f];
+    [self setCollectionView:[[UICollectionView alloc] initWithFrame:[[self view] frame] collectionViewLayout:circularLayout]];
     
-    [_collectionView setPagingEnabled:YES];
-//    [_collectionView registerClass:[SampleCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([SampleCollectionViewCell class])];
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
-    [_collectionView setFrame:CGRectMake(0.0, 0.0, [[self view] bounds].size.width, 500.0f)];
-    
-    [[self view] addSubview:_collectionView];
 
-    [self reloadCollectionView:_collectionView addViewModels:[self mockDatasConvertToViewModels]];
+    [[self view] addSubview:_collectionView];
+    
+    [self reloadCollectionView:_collectionView addViewModels:[self convertMockData:[SampleMainVO class]] secondSectionViewModels:[self convertMockData:[SampleSubVO class]]];
 }
 
 #pragma mark - UICollectionViewDataSource
-
--(NSInteger)collectionView:(UICollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)aSection
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return [_viewModels count];
 }
 
+-(NSInteger)collectionView:(UICollectionView *)aCollectionView numberOfItemsInSection:(NSInteger)aSection
+{
+    return [_viewModels[aSection] count];
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView cellForItemAtIndexPath:(NSIndexPath *)aIndexPath
 {
-    ISDebugLog(@"row : %ld", (long)[aIndexPath row]);
+    ISDebugLog(@"indexPath : %@", aIndexPath);
     
-    id<SampleCollectionViewModelProtocol> sViewModel = [_viewModels objectAtIndex:[aIndexPath row]];
+    NSArray *sViewModels = _viewModels[[aIndexPath section]];
+    id<SampleCollectionViewModelProtocol> sViewModel = [sViewModels objectAtIndex:[aIndexPath row]];
     if ([sViewModel conformsToProtocol:@protocol(SampleCollectionViewModelProtocol)] &&
         [sViewModel respondsToSelector:@selector(collectionView:cellForItemAtIndexPath:)])
     {
@@ -103,13 +115,35 @@ static NSArray *gMockupData = nil;
     return nil;
 }
 
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)aIndexPath
+{
+    ISDebugLog(@"indexPath : %@", aIndexPath);
+    
+#if DID_SEL_TO_DELETE
+    UICollectionViewCell *sSelectedCell = [_collectionView cellForItemAtIndexPath:aIndexPath];
+    [sSelectedCell setSelected:NO];
+    
+    [self deleteViewModelAtRow:[aIndexPath row]];
+    [_collectionView performBatchUpdates:^{
+        [_collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:[aIndexPath row] inSection:0],
+                                                   [NSIndexPath indexPathForRow:[aIndexPath row] inSection:1]]];
+    } completion:nil];
+#else
+    NSIndexPath *sUpSectionIndexPath = [NSIndexPath indexPathForRow:[aIndexPath row] inSection:1];
+    [_collectionView reloadItemsAtIndexPaths:@[sUpSectionIndexPath]];
+#endif
+}
+
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)aCollectionView layout:(UICollectionViewLayout *)aCollectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)aIndexPath
 {
-    ISDebugLog(@"row : %ld", (long)[aIndexPath row]);
-
-    id<SampleCollectionViewModelProtocol> sViewModel = [_viewModels objectAtIndex:[aIndexPath row]];
+    ISDebugLog(@"indexPath : %@", aIndexPath);
+    
+    NSArray *sViewModels = _viewModels[[aIndexPath section]];
+    id<SampleCollectionViewModelProtocol> sViewModel = [sViewModels objectAtIndex:[aIndexPath row]];
     if ([sViewModel conformsToProtocol:@protocol(SampleCollectionViewModelProtocol)] &&
         [sViewModel respondsToSelector:@selector(collectionView:layout:sizeForItemAtIndexPath:)])
     {
@@ -123,24 +157,23 @@ static NSArray *gMockupData = nil;
 /**
  data converts to view model
  */
-- (NSArray<id<SampleCollectionViewModelProtocol>> *)mockDatasConvertToViewModels
+- (NSArray<id<SampleCollectionViewModelProtocol>> *)convertMockData:(Class)aClass
 {
     NSMutableArray<id<SampleCollectionViewModelProtocol>> *sViewModels = [NSMutableArray array];
+    
     for (id data in gMockupData)
     {
-        if ([data isKindOfClass:[SampleMainVO class]])
+        if ([aClass isSubclassOfClass:[SampleMainVO class]] &&
+            [data isKindOfClass:[SampleMainVO class]])
         {
             SampleCollectionViewModel *viewModel = [[SampleCollectionViewModel alloc] initWithData:data];
             [sViewModels addObject:viewModel];
         }
-        else if ([data isKindOfClass:[SampleSubVO class]])
+        else if ([aClass isSubclassOfClass:[SampleSubVO class]] &&
+                 [data isKindOfClass:[SampleSubVO class]])
         {
             SampleSubCollectionViewModel *viewModel = [[SampleSubCollectionViewModel alloc] initWithData:data];
             [sViewModels addObject:viewModel];
-        }
-        else
-        {
-            
         }
     }
     return [sViewModels copy];
@@ -149,8 +182,9 @@ static NSArray *gMockupData = nil;
 /**
  reload and add view model to the collection view
  */
-- (void)reloadCollectionView:(UICollectionView *)aCollectionView addViewModels:(NSArray<id<SampleCollectionViewModelProtocol>> *)aViewModels
+- (void)reloadCollectionView:(UICollectionView *)aCollectionView addViewModels:(NSArray<id<SampleCollectionViewModelProtocol>> *)aViewModels secondSectionViewModels:(NSArray<id<SampleCollectionViewModelProtocol>> *)aSecondViewModels
 {
+    // set
     NSMutableArray *sViewModelProtocols = [NSMutableArray array];
     for (id<SampleCollectionViewModelProtocol> viewModel in aViewModels)
     {
@@ -161,11 +195,48 @@ static NSArray *gMockupData = nil;
             [sViewModelProtocols addObject:viewModel];
         }
     }
-    if (!_viewModels)
+    if (!_firstSectionViewModels)
     {
-        _viewModels = [NSArray array];
+        [self setFirstSectionViewModels:[NSArray array]];
     }
-    _viewModels = [_viewModels arrayByAddingObjectsFromArray:sViewModelProtocols];
+    [self setFirstSectionViewModels:[_firstSectionViewModels arrayByAddingObjectsFromArray:sViewModelProtocols]];
+    
+    // set
+    sViewModelProtocols = [NSMutableArray array];
+    for (id<SampleCollectionViewModelProtocol> viewModel in aSecondViewModels)
+    {
+        if ([viewModel conformsToProtocol:@protocol(SampleCollectionViewModelProtocol)])
+        {
+            Class sCollectionViewModelClass = [[viewModel class] collectionViewCellClass];
+            [aCollectionView registerClass:sCollectionViewModelClass forCellWithReuseIdentifier:NSStringFromClass(sCollectionViewModelClass)];
+            [sViewModelProtocols addObject:viewModel];
+        }
+    }
+    if (!_secondSectionViewModels)
+    {
+        [self setSecondSectionViewModels:[NSArray array]];
+    }
+    [self setSecondSectionViewModels:[_secondSectionViewModels arrayByAddingObjectsFromArray:sViewModelProtocols]];
+    
+    // set
+    [self setViewModels:@[_firstSectionViewModels, _secondSectionViewModels]];
+    
     [aCollectionView reloadData];
+}
+
+
+/**
+ delete view model
+ */
+- (void)deleteViewModelAtRow:(NSInteger)aRow;
+{
+    NSMutableArray *sMutableFirstViewModels = [_firstSectionViewModels mutableCopy];
+    NSMutableArray *sMutableSecondSectionViewModels = [_secondSectionViewModels mutableCopy];
+    [sMutableFirstViewModels removeObjectAtIndex:aRow];
+    [sMutableSecondSectionViewModels removeObjectAtIndex:aRow];
+    [self setFirstSectionViewModels:[sMutableFirstViewModels copy]];
+    [self setSecondSectionViewModels:[sMutableSecondSectionViewModels copy]];
+    
+    [self setViewModels:@[_firstSectionViewModels, _secondSectionViewModels]];
 }
 @end

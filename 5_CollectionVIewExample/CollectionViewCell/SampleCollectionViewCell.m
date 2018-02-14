@@ -42,6 +42,7 @@
 - (void)prepareForReuse
 {
     [_imageView setImage:nil];
+    [self setSelected:NO];
 }
 
 

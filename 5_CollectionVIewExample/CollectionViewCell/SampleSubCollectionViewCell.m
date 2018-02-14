@@ -58,6 +58,7 @@
 {
     [_titleLabel setText:@""];
     [_valueLabel setText:@""];
+    [self setSelected:NO];
 }
 
 @end
