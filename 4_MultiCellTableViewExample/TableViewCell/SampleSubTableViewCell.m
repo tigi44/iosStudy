@@ -21,7 +21,6 @@
 {
     self = [super initWithStyle:aStyle reuseIdentifier:aReuseIdentifier];
     if (self) {
-
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [_titleLabel setNumberOfLines:1];
         [_titleLabel setFont:[UIFont systemFontOfSize:16]];

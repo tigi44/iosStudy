@@ -20,6 +20,7 @@
 {
     self = [super initWithFrame:aFrame];
     if (self) {
+        ISDebugLog();
         [self setBackgroundColor:[UIColor lightGrayColor]];
         
         // init the label
@@ -27,11 +28,10 @@
         [_descriptionLabel setNumberOfLines:1];
         [_descriptionLabel setFont:[UIFont boldSystemFontOfSize:24.0f]];
         [_descriptionLabel setTextColor:[UIColor whiteColor]];
-        [_descriptionLabel setText:@"TAP VIEW TEST!!"];
+        [_descriptionLabel setText:@"TAP DELEGATE TEST!!"];
         [self addSubview:_descriptionLabel];
         
         [self setupGesture];
-        ISDebugLog();
     }
     
     return self;
@@ -45,8 +45,8 @@
     // set the label layout
     [_descriptionLabel sizeToFit];
     CGRect sDescriptionLabelFrame = [_descriptionLabel frame];
-    sDescriptionLabelFrame.origin.x = (NSInteger)(([[_descriptionLabel superview] frame].size.width - sDescriptionLabelFrame.size.width) / 2); // MoveToHorizontalCenter
-    sDescriptionLabelFrame.origin.y = (NSInteger)(([[_descriptionLabel superview] frame].size.height - sDescriptionLabelFrame.size.height) / 2); // MoveToVerticalCenter
+    sDescriptionLabelFrame.origin.x = (NSInteger)(([[_descriptionLabel superview] frame].size.width - sDescriptionLabelFrame.size.width) / 2);      // MoveToHorizontalCenter
+    sDescriptionLabelFrame.origin.y = (NSInteger)(([[_descriptionLabel superview] frame].size.height - sDescriptionLabelFrame.size.height) / 2);    // MoveToVerticalCenter
     [_descriptionLabel setFrame:sDescriptionLabelFrame];
 }
 

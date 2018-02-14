@@ -38,8 +38,8 @@
     // set the imageView layout
     UIImageView *sImageView = [self imageView];
     CGRect sImageViewFrame = [sImageView frame];
-    sImageViewFrame.size = CGSizeMake(200, 200);
-    sImageViewFrame.origin.x = (NSInteger)(([[sImageView superview] frame].size.width - sImageViewFrame.size.width) / 2); // MoveToHorizontalCenter
+    sImageViewFrame.size = CGSizeMake(200, 200);                                                                            // SetSize
+    sImageViewFrame.origin.x = (NSInteger)(([[sImageView superview] frame].size.width - sImageViewFrame.size.width) / 2);   // MoveToHorizontalCenter
     sImageViewFrame.origin.y = (NSInteger)(([[sImageView superview] frame].size.height - sImageViewFrame.size.height) / 2); // MoveToVerticalCenter
     [sImageView setFrame:sImageViewFrame];
     [[sImageView layer] setCornerRadius:100.f];
@@ -56,8 +56,8 @@
     // set the label layout
     [_descriptionLabel sizeToFit];
     CGRect sDescriptionLabelFrame = [_descriptionLabel frame];
-    sDescriptionLabelFrame.origin.x = (NSInteger)(([[_descriptionLabel superview] frame].size.width - sDescriptionLabelFrame.size.width) / 2); // MoveToHorizontalCenter
-    sDescriptionLabelFrame.origin.y = sImageViewFrame.origin.y + sImageViewFrame.size.height + 10.0f; // MoveToBottomOf 'ImageView'
+    sDescriptionLabelFrame.origin.x = (NSInteger)(([[_descriptionLabel superview] frame].size.width - sDescriptionLabelFrame.size.width) / 2);  // MoveToHorizontalCenter
+    sDescriptionLabelFrame.origin.y = sImageViewFrame.origin.y + sImageViewFrame.size.height + 10.0f;                                           // MoveToBottomOf 'ImageView'
     [_descriptionLabel setFrame:sDescriptionLabelFrame];
 }
 
@@ -84,7 +84,7 @@
     [_descriptionLabel setNumberOfLines:1];
     [_descriptionLabel setFont:[UIFont boldSystemFontOfSize:24.0f]];
     [_descriptionLabel setTextColor:[UIColor whiteColor]];
-    [_descriptionLabel setText:@"...."];
+    [_descriptionLabel setText:@"Brooklyn NETS"];
 
     [self addSubview:_descriptionLabel];  
 }

@@ -24,6 +24,8 @@ static NSArray *gCellColor = nil;
 + (void)initialize
 {
     [super initialize];
+    ISDebugLog();
+    
     gMockupData = [@[@[@"1_1", @"1_2", @"1_3"], @[@"2_1", @"2_2", @"2_3"], @[@"3_1", @"3_2", @"3_3"]] mutableCopy];
     gCellColor = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
 }
@@ -43,7 +45,6 @@ static NSArray *gCellColor = nil;
     // set refresh control for table view
     [self setRefreshControl:[[UIRefreshControl alloc] init]];
     [_refreshControl setAttributedTitle:[[NSAttributedString alloc]initWithString:@"Pull to Refresh"]];
-    
     // use 'scrollViewDidEndDecelerating' method to refresh data (the other method is that add target to refresh control.. like below..)
 //    [_refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     [_tableView setRefreshControl:_refreshControl];

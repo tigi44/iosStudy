@@ -38,7 +38,7 @@
     ISDebugLog();
     
     // 2. for testing delegate pattern
-    // set delegate on the touchSampleView
+    // set delegate on the touchSampleView (use getter when get 'touchSampleView' for casting)
     [[self touchSampleView] setDelegate:self];
 }
 

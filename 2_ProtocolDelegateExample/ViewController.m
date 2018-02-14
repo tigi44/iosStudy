@@ -35,7 +35,7 @@
 #endif
     [_sampleProtocolTestImpl optionalProtocolMethod]; // [_sampleProtocolTestImpl conformsToProtocol:@protocol(TouchSampleProtocol)] &&[_sampleProtocolTestImpl respondsToSelector:@selector(optionalProtocolMethod)]
     
-    
+    // 2. for testing delegate pattern
     ProtocolDelegateSampleUIView *sSampleView = [[ProtocolDelegateSampleUIView alloc] initWithFrame:[self view].bounds];
     [[self view] addSubview:sSampleView];
     

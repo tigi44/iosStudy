@@ -25,6 +25,7 @@ static NSArray *gMockupData = nil;
 + (void)initialize
 {
     [super initialize];
+    ISDebugLog();
     
     gMockupData = @[
                     [[SampleMainVO alloc] initWithName:@"지수" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F133%2F201706191754547821.jpg"],
@@ -58,63 +59,6 @@ static NSArray *gMockupData = nil;
                     ];
 }
 
-/**
- data converts to view model
-
- @return : view model array
- */
-- (NSArray<id<SampleViewModelProtocol>> *)mockDataConvertToViewModel {
-    NSMutableArray<id<SampleViewModelProtocol>> *sViewModels = [NSMutableArray array];
-    for (id data in gMockupData)
-    {
-        if ([data isKindOfClass:[SampleMainVO class]])
-        {
-            SampleMainViewModel *viewModel = [[SampleMainViewModel alloc] initWithData:data];
-            [sViewModels addObject:viewModel];
-        }
-        else if ([data isKindOfClass:[SampleSubVO class]])
-        {
-            SampleSubViewModel *viewModel = [[SampleSubViewModel alloc] initWithData:data];
-            [sViewModels addObject:viewModel];
-        }
-        else
-        {
-            
-        }
-    }
-    return [sViewModels copy];
-}
-
-/**
- add view model to the table view
-
- @param aViewModels : view models
- */
-- (void)addViewModels:(NSArray<id<SampleViewModelProtocol>> *)aViewModels
-{
-    NSMutableArray *viewModelProtocols = [NSMutableArray array];
-    for (id<SampleViewModelProtocol> viewModel in aViewModels)
-    {
-        if ([viewModel conformsToProtocol:@protocol(SampleViewModelProtocol)])
-        {
-            Class sTableViewModelClass = [[viewModel class] tableViewCellClass];
-            id sTabelViewCell = [_tableView dequeueReusableCellWithIdentifier:NSStringFromClass(sTableViewModelClass)];
-            if (!sTabelViewCell) {
-                [_tableView registerClass:sTableViewModelClass forCellReuseIdentifier:NSStringFromClass(sTableViewModelClass)];
-            }
-            [viewModelProtocols addObject:viewModel];
-        }
-    }
-    if (!_viewModels)
-    {
-        _viewModels = [NSArray array];
-    }
-    _viewModels = [_viewModels arrayByAddingObjectsFromArray:viewModelProtocols];
-    [_tableView reloadData];
-}
-
-#pragma mark - UIViewController
-
 - (void)loadView
 {
     ISDebugLog();
@@ -131,7 +75,7 @@ static NSArray *gMockupData = nil;
     ISDebugLog();
     
     // add view models to the table view
-    [self addViewModels:[self mockDataConvertToViewModel]];
+    [self reloadTableView:_tableView addViewModels:[self mockDatasConvertToViewModels]];
 }
 
 #pragma mark - Implements UITableViewDataSource Methods.
@@ -200,8 +144,65 @@ static NSArray *gMockupData = nil;
     {
         // bottom
         ISDebugLog();
-        [self addViewModels:[self mockDataConvertToViewModel]];
+        [self reloadTableView:_tableView addViewModels:[self mockDatasConvertToViewModels]];
     }
+}
+
+#pragma mark -
+
+/**
+ data converts to view model
+ 
+ @return : view model array
+ */
+- (NSArray<id<SampleViewModelProtocol>> *)mockDatasConvertToViewModels {
+    NSMutableArray<id<SampleViewModelProtocol>> *sViewModels = [NSMutableArray array];
+    for (id data in gMockupData)
+    {
+        if ([data isKindOfClass:[SampleMainVO class]])
+        {
+            SampleMainViewModel *viewModel = [[SampleMainViewModel alloc] initWithData:data];
+            [sViewModels addObject:viewModel];
+        }
+        else if ([data isKindOfClass:[SampleSubVO class]])
+        {
+            SampleSubViewModel *viewModel = [[SampleSubViewModel alloc] initWithData:data];
+            [sViewModels addObject:viewModel];
+        }
+        else
+        {
+            
+        }
+    }
+    return [sViewModels copy];
+}
+
+/**
+ add view model to the table view
+ 
+ @param aViewModels : view models
+ */
+- (void)reloadTableView:(UITableView *)aTableView addViewModels:(NSArray<id<SampleViewModelProtocol>> *)aViewModels
+{
+    NSMutableArray *viewModelProtocols = [NSMutableArray array];
+    for (id<SampleViewModelProtocol> viewModel in aViewModels)
+    {
+        if ([viewModel conformsToProtocol:@protocol(SampleViewModelProtocol)])
+        {
+            Class sTableViewModelClass = [[viewModel class] tableViewCellClass];
+            id sTabelViewCell = [_tableView dequeueReusableCellWithIdentifier:NSStringFromClass(sTableViewModelClass)];
+            if (!sTabelViewCell) {
+                [_tableView registerClass:sTableViewModelClass forCellReuseIdentifier:NSStringFromClass(sTableViewModelClass)];
+            }
+            [viewModelProtocols addObject:viewModel];
+        }
+    }
+    if (!_viewModels)
+    {
+        _viewModels = [NSArray array];
+    }
+    _viewModels = [_viewModels arrayByAddingObjectsFromArray:viewModelProtocols];
+    [aTableView reloadData];
 }
 
 

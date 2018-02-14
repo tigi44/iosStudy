@@ -41,8 +41,8 @@
     
     // set the button layout
     CGRect sButtonFrame = [_button frame];
-    sButtonFrame.origin.x = (NSInteger)(([[_button superview] frame].size.width - sButtonFrame.size.width) / 2); // MoveToHorizontalCenter
-    sButtonFrame.origin.y = sDescriptionLabelFrame.origin.y + sDescriptionLabelFrame.size.height + 10.0f; // MoveToBottomOf 'DescriptionLabel'
+    sButtonFrame.origin.x = (NSInteger)(([[_button superview] frame].size.width - sButtonFrame.size.width) / 2);    // MoveToHorizontalCenter
+    sButtonFrame.origin.y = sDescriptionLabelFrame.origin.y + sDescriptionLabelFrame.size.height + 10.0f;           // MoveToBottomOf 'DescriptionLabel'
     [_button setFrame:sButtonFrame];
 }
 @end

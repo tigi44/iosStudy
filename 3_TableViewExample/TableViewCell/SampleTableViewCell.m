@@ -14,7 +14,7 @@
 {
     self = [super initWithStyle:aStyle reuseIdentifier:aReuseIdentifier];
     if (self) {
-        
+        ISDebugLog();
     }
     return self;
 }
