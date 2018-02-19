@@ -6,6 +6,9 @@
 //  Copyright © 2018년 tigi. All rights reserved.
 //
 
+// TEST LIST
+// 1. about Custom UICollectionViewLayout
+
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
