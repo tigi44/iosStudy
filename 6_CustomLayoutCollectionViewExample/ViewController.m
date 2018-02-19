@@ -10,7 +10,7 @@
 #import "ISDebugLog.h"
 #import "SampleCollectionViewModel.h"
 #import "SampleSubCollectionViewModel.h"
-#import "DSCircularLayout.h"
+#import "DSCircularLayoutCustom.h"
 
 #define DID_SEL_TO_DELETE 1
 
@@ -34,33 +34,59 @@ static NSArray *gMockupData = nil;
     
     gMockupData = @[
                     [[SampleMainVO alloc] initWithName:@"지수" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F133%2F201706191754547821.jpg"],
-                    [[SampleSubVO alloc] initWithTitle:@"birthday" value:@"1995. 01. 03"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1995. 01. 03"],
                     
                     [[SampleMainVO alloc] initWithName:@"제니" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F15%2F201706191752248631.jpg"],
-                    [[SampleSubVO alloc] initWithTitle:@"birthday" value:@"1996. 01. 16"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1996. 01. 16"],
                     
                     
                     [[SampleMainVO alloc] initWithName:@"로제" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F119%2F201706191755398991.jpg"],
-                    [[SampleSubVO alloc] initWithTitle:@"birthday" value:@"1997. 02. 11"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1997. 02. 11"],
                     
                     [[SampleMainVO alloc] initWithName:@"리사" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F120%2F201706191756263751.jpg"],
-                    [[SampleSubVO alloc] initWithTitle:@"birthday" value:@"1997. 03. 27"],
-                    [[SampleSubVO alloc] initWithTitle:@"company" value:@"YG"]
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1997. 03. 27"]
                     
                     ,
                     
                     [[SampleMainVO alloc] initWithName:@"지수" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F133%2F201706191754547821.jpg"],
-                    [[SampleSubVO alloc] initWithTitle:@"birthday" value:@"1995. 01. 03"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1995. 01. 03"],
                     
                     [[SampleMainVO alloc] initWithName:@"제니" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F15%2F201706191752248631.jpg"],
-                    [[SampleSubVO alloc] initWithTitle:@"birthday" value:@"1996. 01. 16"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1996. 01. 16"],
                     
                     [[SampleMainVO alloc] initWithName:@"로제" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F119%2F201706191755398991.jpg"],
-                    [[SampleSubVO alloc] initWithTitle:@"birthday" value:@"1997. 02. 11"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1997. 02. 11"],
                     
                     [[SampleMainVO alloc] initWithName:@"리사" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F120%2F201706191756263751.jpg"],
-                    [[SampleSubVO alloc] initWithTitle:@"birthday" value:@"1997. 03. 27"],
-                    [[SampleSubVO alloc] initWithTitle:@"company" value:@"YG"]
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1997. 03. 27"]
+                    
+                    ,
+                    
+                    [[SampleMainVO alloc] initWithName:@"지수" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F133%2F201706191754547821.jpg"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1995. 01. 03"],
+                    
+                    [[SampleMainVO alloc] initWithName:@"제니" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F15%2F201706191752248631.jpg"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1996. 01. 16"],
+                    
+                    [[SampleMainVO alloc] initWithName:@"로제" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F119%2F201706191755398991.jpg"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1997. 02. 11"],
+                    
+                    [[SampleMainVO alloc] initWithName:@"리사" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F120%2F201706191756263751.jpg"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1997. 03. 27"]
+                    
+                    ,
+                    
+                    [[SampleMainVO alloc] initWithName:@"지수" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F133%2F201706191754547821.jpg"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1995. 01. 03"],
+                    
+                    [[SampleMainVO alloc] initWithName:@"제니" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F15%2F201706191752248631.jpg"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1996. 01. 16"],
+                    
+                    [[SampleMainVO alloc] initWithName:@"로제" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F119%2F201706191755398991.jpg"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1997. 02. 11"],
+                    
+                    [[SampleMainVO alloc] initWithName:@"리사" thumbnailURL:@"https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F120%2F201706191756263751.jpg"],
+                    [[SampleSubVO alloc] initWithTitle:@"" value:@"1997. 03. 27"]
                     ];
 }
 
@@ -68,13 +94,13 @@ static NSArray *gMockupData = nil;
     [super viewDidLoad];
     ISDebugLog();
     
-    DSCircularLayout *circularLayout = [[DSCircularLayout alloc] init];
+    DSCircularLayoutCustom *circularLayout = [[DSCircularLayoutCustom alloc] init];
     CGFloat sItemSize = 50.f;
     [circularLayout initWithCentre:CGPointMake([[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2)
                             radius:[[UIScreen mainScreen] bounds].size.width/3
                           itemSize:CGSizeMake(sItemSize, sItemSize)
-                 andAngularSpacing:sItemSize * 1.8f];
-    [circularLayout setStartAngle:M_PI endAngle:-M_PI];
+                 andAngularSpacing:sItemSize * 1.85f];
+    [circularLayout setStartAngle:M_PI endAngle:0];
     circularLayout.mirrorX = NO;
     circularLayout.mirrorY = NO;
     circularLayout.rotateItems = YES;
@@ -125,7 +151,7 @@ static NSArray *gMockupData = nil;
     UICollectionViewCell *sSelectedCell = [_collectionView cellForItemAtIndexPath:aIndexPath];
     [sSelectedCell setSelected:NO];
     
-    [self deleteViewModelAtRow:[aIndexPath row]];
+    [self deleteTwoViewModelAtRow:[aIndexPath row]];
     [_collectionView performBatchUpdates:^{
         [_collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:[aIndexPath row] inSection:0],
                                                    [NSIndexPath indexPathForRow:[aIndexPath row] inSection:1]]];
@@ -228,7 +254,7 @@ static NSArray *gMockupData = nil;
 /**
  delete view model
  */
-- (void)deleteViewModelAtRow:(NSInteger)aRow;
+- (void)deleteTwoViewModelAtRow:(NSInteger)aRow;
 {
     NSMutableArray *sMutableFirstViewModels = [_firstSectionViewModels mutableCopy];
     NSMutableArray *sMutableSecondSectionViewModels = [_secondSectionViewModels mutableCopy];

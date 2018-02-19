@@ -1,22 +1,26 @@
 //
-//  DSCircularLayout.m
-//  DSCircularCollection-ViewExample
+//  DSCircularLayoutCustom.m
+//  6_CustomLayoutCollectionViewExample
 //
-//  Created by Srinivasan Dodda on 04/07/16.
-//  Copyright © 2016 Srinivasan Dodda. All rights reserved.
+//  Created by tigi on 2018. 2. 19..
+//  Copyright © 2018년 tigi. All rights reserved.
 //
 
-#import "DSCircularLayout.h"
+#import "DSCircularLayoutCustom.h"
 
-@implementation DSCircularLayout{
+@implementation DSCircularLayoutCustom{
     CGFloat angleOfEachItem;
     CGFloat angleForSpacing;
     CGFloat circumference;
     long cellCount;
+    long secondSectionCellCount;
     CGFloat maxNoOfCellsInCircle;
     
     CGFloat _startAngle;
     CGFloat _endAngle;
+    
+    NSIndexPath *deleteIndexPath;
+    UICollectionUpdateAction layoutUpdateAction;
 }
 
 - (id)init {
@@ -49,6 +53,7 @@
 -(void)prepareLayout{
     [super prepareLayout];
     cellCount = [self.collectionView numberOfItemsInSection:0];
+    secondSectionCellCount = [self.collectionView numberOfItemsInSection:1];
     circumference = ABS(_startAngle - _endAngle)*_radius;
     maxNoOfCellsInCircle =  circumference/(MAX(_itemSize.width, _itemSize.height) + _angularSpacing/2);
     angleOfEachItem = ABS(_startAngle - _endAngle)/maxNoOfCellsInCircle;
@@ -97,7 +102,25 @@
         attributes.alpha = 0;
     }
     
-    attributes.center = CGPointMake(x, y);
+    if ([indexPath section] == 0)
+    {
+        attributes.center = CGPointMake(x, y);
+    }
+    else
+    {
+        CGPoint sContentCenter = CGPointMake(_centre.x + self.collectionView.contentOffset.x,  _centre.y + self.collectionView.contentOffset.y);
+        CGVector sVector = CGVectorMake(x - sContentCenter.x, y - sContentCenter.y);
+        attributes.center = CGPointMake(x + sVector.dx/2, y + sVector.dy/2);
+        if ([[[self collectionView] cellForItemAtIndexPath:[NSIndexPath indexPathForRow:[indexPath row] inSection:0]] isSelected])
+        {
+            attributes.hidden = NO;
+        }
+        else
+        {
+            attributes.hidden = YES;
+        }
+    }
+    
     attributes.zIndex = cellCount - indexPath.item;
     if(_rotateItems){
         attributes.transform = CGAffineTransformMakeRotation(cellCurrentAngle - M_PI/2);
@@ -127,7 +150,25 @@
         attributes.alpha = 0;
     }
     
-    attributes.center = CGPointMake(x, y);
+    if ([indexPath section] == 0)
+    {
+        attributes.center = CGPointMake(x, y);
+    }
+    else
+    {
+        CGPoint sContentCenter = CGPointMake(_centre.x + self.collectionView.contentOffset.x,  _centre.y + self.collectionView.contentOffset.y);
+        CGVector sVector = CGVectorMake(x - sContentCenter.x, y - sContentCenter.y);
+        attributes.center = CGPointMake(x + sVector.dx/2, y + sVector.dy/2);
+        if ([[[self collectionView] cellForItemAtIndexPath:[NSIndexPath indexPathForRow:[indexPath row] inSection:0]] isSelected])
+        {
+            attributes.hidden = NO;
+        }
+        else
+        {
+            attributes.hidden = YES;
+        }
+    }
+    
     attributes.zIndex = cellCount - indexPath.item;
     if(_rotateItems){
         attributes.transform = CGAffineTransformMakeRotation(cellCurrentAngle - M_PI/2);
@@ -145,27 +186,60 @@
             [attributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
         }
     }
+    
+    for(NSInteger i=0; i < secondSectionCellCount; i++){
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:1];
+        UICollectionViewLayoutAttributes *cellAttributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+        if(CGRectIntersectsRect(rect, cellAttributes.frame) && cellAttributes.alpha != 0){
+            [attributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
+        }
+    }
+    
     return attributes;
 }
 
 - (UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
 {
     UICollectionViewLayoutAttributes *attributes = [super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
-    attributes.center = CGPointMake(_centre.x + self.collectionView.contentOffset.x, _centre.y + self.collectionView.contentOffset.y);
-    attributes.alpha = 0.2;
-    attributes.transform = CGAffineTransformMakeScale(0.5, 0.5);
-    return attributes;
     
+    if ([itemIndexPath section] == 1)
+    {
+        attributes.alpha = 0.2;
+        attributes.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    }
+    return attributes;
+
 }
 
 - (UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
 {
     UICollectionViewLayoutAttributes *attributes = [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
-    attributes.center = CGPointMake(_centre.x + self.collectionView.contentOffset.x, _centre.y + self.collectionView.contentOffset.y);
-    attributes.alpha = 0.2;
-    attributes.transform = CGAffineTransformMakeScale(0.5, 0.5);
+
+    if (layoutUpdateAction != UICollectionUpdateActionDelete ||
+        (layoutUpdateAction == UICollectionUpdateActionDelete && [deleteIndexPath isEqual:itemIndexPath]))
+    {
+        CGPoint sContentCenter = CGPointMake(_centre.x + self.collectionView.contentOffset.x,  _centre.y + self.collectionView.contentOffset.y);
+        CGVector sVector = CGVectorMake(attributes.center.x - sContentCenter.x, attributes.center.y - sContentCenter.y);
+        attributes.center = CGPointMake(attributes.center.x + sVector.dx, attributes.center.y + sVector.dy);
+        attributes.alpha = 0.2;
+        attributes.transform = CGAffineTransformScale(attributes.transform, 0.5, 0.5);
+    }
     return attributes;
-    
+}
+
+- (void)prepareForCollectionViewUpdates:(NSArray<UICollectionViewUpdateItem *> *)updateItems
+{
+    for (UICollectionViewUpdateItem *sItem in updateItems)
+    {
+        if ([sItem updateAction] == UICollectionUpdateActionDelete)
+        {
+            if ([[sItem indexPathBeforeUpdate] section] == 0)
+            {
+                layoutUpdateAction = UICollectionUpdateActionDelete;
+                deleteIndexPath = [sItem indexPathBeforeUpdate];
+            }
+        }
+    }
 }
 
 -(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
@@ -173,3 +247,5 @@
 }
 
 @end
+
+

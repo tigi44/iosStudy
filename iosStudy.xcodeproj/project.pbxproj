@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E4B517E203A60400044721D /* DSCircularLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B517C203A603F0044721D /* DSCircularLayout.m */; };
+		0E4B5184203A67880044721D /* DSCircularLayoutCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4B5183203A67880044721D /* DSCircularLayoutCustom.m */; };
 		0EA7C7D720315BD4007735E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C7D620315BD4007735E1 /* AppDelegate.m */; };
 		0EA7C7DA20315BD4007735E1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C7D920315BD4007735E1 /* ViewController.m */; };
 		0EA7C7DD20315BD5007735E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7C7DB20315BD5007735E1 /* Main.storyboard */; };
@@ -78,10 +80,13 @@
 		0EA7C8E62033FC45007735E1 /* SampleSubCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8AA2033DEA8007735E1 /* SampleSubCollectionViewCell.m */; };
 		0EA7C8E72033FC53007735E1 /* SampleMainVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8712032C65B007735E1 /* SampleMainVO.m */; };
 		0EA7C8E82033FC53007735E1 /* SampleSubVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8742032C66B007735E1 /* SampleSubVO.m */; };
-		0EA7C8EC20340644007735E1 /* DSCircularLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7C8EB20340644007735E1 /* DSCircularLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E4B517C203A603F0044721D /* DSCircularLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCircularLayout.m; sourceTree = "<group>"; };
+		0E4B517D203A60400044721D /* DSCircularLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCircularLayout.h; sourceTree = "<group>"; };
+		0E4B5182203A67880044721D /* DSCircularLayoutCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCircularLayoutCustom.h; sourceTree = "<group>"; };
+		0E4B5183203A67880044721D /* DSCircularLayoutCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCircularLayoutCustom.m; sourceTree = "<group>"; };
 		0EA7C7D320315BD4007735E1 /* 1_UIViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1_UIViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA7C7D520315BD4007735E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0EA7C7D620315BD4007735E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -184,8 +189,6 @@
 		0EA7C8DB2033FC06007735E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EA7C8DD2033FC06007735E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EA7C8DE2033FC06007735E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0EA7C8EA20340644007735E1 /* DSCircularLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCircularLayout.h; sourceTree = "<group>"; };
-		0EA7C8EB20340644007735E1 /* DSCircularLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCircularLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,8 +493,10 @@
 		0EA7C8E92034061E007735E1 /* CustomLayout */ = {
 			isa = PBXGroup;
 			children = (
-				0EA7C8EA20340644007735E1 /* DSCircularLayout.h */,
-				0EA7C8EB20340644007735E1 /* DSCircularLayout.m */,
+				0E4B517D203A60400044721D /* DSCircularLayout.h */,
+				0E4B517C203A603F0044721D /* DSCircularLayout.m */,
+				0E4B5182203A67880044721D /* DSCircularLayoutCustom.h */,
+				0E4B5183203A67880044721D /* DSCircularLayoutCustom.m */,
 			);
 			path = CustomLayout;
 			sourceTree = "<group>";
@@ -809,13 +814,14 @@
 				0EA7C8E72033FC53007735E1 /* SampleMainVO.m in Sources */,
 				0EA7C8E82033FC53007735E1 /* SampleSubVO.m in Sources */,
 				0EA7C8E32033FC45007735E1 /* SampleCollectionViewModel.m in Sources */,
+				0E4B517E203A60400044721D /* DSCircularLayout.m in Sources */,
+				0E4B5184203A67880044721D /* DSCircularLayoutCustom.m in Sources */,
 				0EA7C8E42033FC45007735E1 /* SampleSubCollectionViewModel.m in Sources */,
 				0EA7C8E52033FC45007735E1 /* SampleCollectionViewCell.m in Sources */,
 				0EA7C8E62033FC45007735E1 /* SampleSubCollectionViewCell.m in Sources */,
 				0EA7C8D42033FC06007735E1 /* ViewController.m in Sources */,
 				0EA7C8DF2033FC06007735E1 /* main.m in Sources */,
 				0EA7C8D12033FC06007735E1 /* AppDelegate.m in Sources */,
-				0EA7C8EC20340644007735E1 /* DSCircularLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
