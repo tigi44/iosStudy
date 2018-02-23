@@ -1,5 +1,5 @@
 # iosStudy
-Objective-C &amp; iOS
+[![Build Status](https://travis-ci.org/tigi44/iosStudy.svg?branch=master)](https://travis-ci.org/tigi44/iosStudy)
 
 ## 1_UIViewExample
 - UIView
