@@ -45,8 +45,7 @@ static NSArray *gCellColor = nil;
     // set refresh control for table view
     [self setRefreshControl:[[UIRefreshControl alloc] init]];
     [_refreshControl setAttributedTitle:[[NSAttributedString alloc]initWithString:@"Pull to Refresh"]];
-    // use 'scrollViewDidEndDecelerating' method to refresh data (the other method is that add target to refresh control.. like below..)
-//    [_refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    [_refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged]; // can use 'scrollViewDidEndDecelerating' method to refresh data
     [_tableView setRefreshControl:_refreshControl];
 }
 
@@ -143,27 +142,29 @@ static NSArray *gCellColor = nil;
 // refresh view when did scroll (instead of adding target on the UIRefreshControl)
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)aScrollView
 {
-    if ([_refreshControl isRefreshing]) {
-        ISDebugLog(@"%@", @"refresh table view");
-        [_refreshControl endRefreshing];
-        
-        // call a self class method
-        [[self class] initialize];
-        
-        [_tableView reloadData];
-    }
+//    if ([_refreshControl isRefreshing]) {
+//        ISDebugLog(@"%@", @"refresh table view");
+//        [_refreshControl endRefreshing];
+//
+//        // call a self class method
+//        [[self class] initialize];
+//
+//        [_tableView reloadData];
+//    }
 }
 
-//- (void)refreshView: (UIRefreshControl *)aSender
-//{
-//    ISDebugLog(@"%@", @"refresh table view");
-//    [_refreshControl endRefreshing];
-//
-//    // call a self class method
-//    [[self class] initialize];
-//
-//    [_tableView reloadData];
-//}
+#pragma mark -
+
+- (void)refreshView: (UIRefreshControl *)aSender
+{
+    ISDebugLog(@"%@", @"refresh table view");
+    [_refreshControl endRefreshing];
+
+    // call a self class method
+    [[self class] initialize];
+
+    [_tableView reloadData];
+}
 
 
 @end
