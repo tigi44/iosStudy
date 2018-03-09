@@ -11,6 +11,7 @@
 @interface SampleMainVO : NSObject
 
 - (instancetype)initWithName:(NSString *)aMemberName thumbnailURL:(NSString *)aThumbnailURL NS_DESIGNATED_INITIALIZER;
+- (void)assignMemberName:(NSString *)aMemberName thumbnailURL:(NSString *)aThumbnailURL;
 
 @property (nonatomic, readonly) NSString *memberName;
 @property (nonatomic, readonly) NSString *memberProfileThumbnailURL;
