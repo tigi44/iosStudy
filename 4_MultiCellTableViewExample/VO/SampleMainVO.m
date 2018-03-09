@@ -31,4 +31,9 @@
     return [NSString stringWithFormat:@"[(%@ %p) memberName : %@]", NSStringFromClass([self class]), self, _memberName];
 }
 
+- (void)assignMemberName:(NSString *)aMemberName thumbnailURL:(NSString *)aThumbnailURL {
+    _memberName                 = aMemberName;
+    _memberProfileThumbnailURL  = aThumbnailURL;
+}
+
 @end

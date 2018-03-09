@@ -22,7 +22,7 @@
     if (self) {        
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         [_imageView setContentMode:UIViewContentModeScaleAspectFit];
-        [_imageView setBackgroundColor:[UIColor redColor]];
+        [_imageView setBackgroundColor:[UIColor darkGrayColor]];
         [[self contentView] addSubview:_imageView];
     }
     return self;
@@ -42,6 +42,7 @@
 - (void)prepareForReuse
 {
     [_imageView setImage:nil];
+    [_imageView setBackgroundColor:[UIColor darkGrayColor]];
     [self setSelected:NO];
 }
 
