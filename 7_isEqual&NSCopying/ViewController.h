@@ -7,8 +7,8 @@
 //
 
 // TEST LIST
-// 1. isEqual : SampleMainVO+isEqual.h
-// 2. NSCopying : SampleMainVO+copy.h
+// 1. isEqual & hash : SampleMainVO+isEqual.h
+// 2. NSCopying Protocol : SampleMainVO+copy.h
 
 #import <UIKit/UIKit.h>
 

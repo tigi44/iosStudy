@@ -8,8 +8,6 @@
 
 #import "SampleMainVO.h"
 
-@interface SampleMainVO (copy)
-
-- (instancetype)copyWithZone:(NSZone *)zone;
+@interface SampleMainVO (copy) <NSCopying>
 
 @end

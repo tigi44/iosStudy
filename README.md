@@ -30,3 +30,7 @@
 ## 6_CustomLayoutCollectionViewExample
 - CUSTOM - UICollectionViewLayout
 - https://github.com/DoddaSrinivasan/DSCircularCollectionView
+
+## 7_isEqual&NSCopying
+- Override isEqual & hash (SampleMainVO+isEqual.h)
+- NSCopying Protocol (SampleMainVO+copy.h)
