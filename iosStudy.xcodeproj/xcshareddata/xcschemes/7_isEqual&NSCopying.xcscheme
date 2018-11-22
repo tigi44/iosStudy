@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0E9B313B21A6A6720094E812"
+               BuildableName = "7_isEqual&amp;NSCopyingTests.xctest"
+               BlueprintName = "7_isEqual&amp;NSCopyingTests"
+               ReferencedContainer = "container:iosStudy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

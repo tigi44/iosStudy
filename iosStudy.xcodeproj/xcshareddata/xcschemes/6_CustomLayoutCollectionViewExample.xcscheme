@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0E9B312D21A6A6480094E812"
+               BuildableName = "6_CustomLayoutCollectionViewExampleTests.xctest"
+               BlueprintName = "6_CustomLayoutCollectionViewExampleTests"
+               ReferencedContainer = "container:iosStudy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
