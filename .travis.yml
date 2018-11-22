@@ -3,12 +3,12 @@ xcode_project: iosStudy.xcodeproj
 xcode_scheme:
   - 1_UIViewExample
   - 2_ProtocolDelegateExample
-	- 3_TableViewExample
-	- 4_MultiCellTableViewExample
-	- 5_CollectionVIewExample
-	- 6_CustomLayoutCollectionViewExample
-	- 7_isEqual&NSCopying
-	- 8_PageViewControllerExample
+  - 3_TableViewExample
+  - 4_MultiCellTableViewExample
+  - 5_CollectionVIewExample
+  - 6_CustomLayoutCollectionViewExample
+  - 7_isEqual&NSCopying
+  - 8_PageViewControllerExample
 xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
 branches:
   only:
