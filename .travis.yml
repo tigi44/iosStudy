@@ -9,6 +9,7 @@ xcode_scheme:
   - 6_CustomLayoutCollectionViewExample
   - 7_isEqual&NSCopying
   - 8_PageViewControllerExample
+  - 9_LocationManagerExample
 xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
 branches:
   only:
