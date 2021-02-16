@@ -13,13 +13,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 1_UIViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 2_ProtocolDelegateExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 3_TableViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 4_MultiCellTableViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 5_CollectionVIewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 6_CustomLayoutCollectionViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 7_isEqual&NSCopying -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 8_PageViewControllerExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    - run: xcodebuild clean build -project iosStudy.xcodeproj -scheme 9_LocationManagerExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
-    
+    - name: Setup Xcode version
+      uses: maxim-lobanov/setup-xcode@v1.2.1
+      with:
+        xcode-version: '11.0'
+    - name: Run
+      run: |
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 1_UIViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 2_ProtocolDelegateExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 3_TableViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 4_MultiCellTableViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 5_CollectionVIewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 6_CustomLayoutCollectionViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 7_isEqual&NSCopying -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 8_PageViewControllerExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 9_LocationManagerExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
+
