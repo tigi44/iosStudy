@@ -25,7 +25,7 @@ jobs:
         xcodebuild clean build -project iosStudy.xcodeproj -scheme 4_MultiCellTableViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
         xcodebuild clean build -project iosStudy.xcodeproj -scheme 5_CollectionVIewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
         xcodebuild clean build -project iosStudy.xcodeproj -scheme 6_CustomLayoutCollectionViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 7_isEqual&NSCopying -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro MaxX'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme '7_isEqual&NSCopying' -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro MaxX'
         xcodebuild clean build -project iosStudy.xcodeproj -scheme 8_PageViewControllerExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
         xcodebuild clean build -project iosStudy.xcodeproj -scheme 9_LocationManagerExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
 
