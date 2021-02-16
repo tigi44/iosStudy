@@ -13,7 +13,7 @@ jobs:
 
     strategy:
         matrix:
-          destination: ["platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max"]
+          destination: ['platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max']
           scheme: ['1_UIViewExample', '2_ProtocolDelegateExample', '3_TableViewExample', '4_MultiCellTableViewExample', '5_CollectionVIewExample', '6_CustomLayoutCollectionViewExample', '7_isEqual&NSCopying', '8_PageViewControllerExample', '9_LocationManagerExample']
           
     steps:
@@ -21,7 +21,7 @@ jobs:
     - name: Set XCode Version
       run: sudo xcode-select -s /Applications/Xcode_12.3.app
     - name: Run
-      run: xcodebuild clean build -project iosStudy.xcodeproj -scheme ${scheme} -destination ${destination}
+      run: xcodebuild clean build -project iosStudy.xcodeproj -scheme "${scheme}" -destination "${destination}"
       env:
        destination: ${{ matrix.destination }}
        scheme: ${{ matrix.scheme }} 
