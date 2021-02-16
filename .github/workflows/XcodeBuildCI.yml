@@ -16,7 +16,7 @@ jobs:
     - name: Setup Xcode version
       uses: maxim-lobanov/setup-xcode@v1.2.1
       with:
-        xcode-version: '11.0'
+        xcode-version: '11.2.1'
     - name: Run
       run: |
         xcodebuild clean build -project iosStudy.xcodeproj -scheme 1_UIViewExample -destination 'platform=iOS Simulator,OS=11.3,name=iPhone X'
