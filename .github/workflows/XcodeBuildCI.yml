@@ -19,13 +19,13 @@ jobs:
         xcode-version: '12.3.0'
     - name: Run
       run: |
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 1_UIViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 2_ProtocolDelegateExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 3_TableViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 4_MultiCellTableViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 5_CollectionVIewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 6_CustomLayoutCollectionViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 7_isEqual&NSCopying -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 8_PageViewControllerExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
-        xcodebuild clean build -project iosStudy.xcodeproj -scheme 9_LocationManagerExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone X'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 1_UIViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 2_ProtocolDelegateExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 3_TableViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 4_MultiCellTableViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 5_CollectionVIewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 6_CustomLayoutCollectionViewExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 7_isEqual&NSCopying -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro MaxX'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 8_PageViewControllerExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
+        xcodebuild clean build -project iosStudy.xcodeproj -scheme 9_LocationManagerExample -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 12 Pro Max'
 
