@@ -1,5 +1,5 @@
 # iosStudy
-[![Build Status](https://travis-ci.org/tigi44/iosStudy.svg?branch=master)](https://travis-ci.org/tigi44/iosStudy)
+![XcodeBuildCI](https://github.com/tigi44/iosStudy/workflows/XcodeBuildCI/badge.svg)
 
 ## 1_UIViewExample
 - UIView
